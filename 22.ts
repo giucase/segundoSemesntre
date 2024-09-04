@@ -50,7 +50,7 @@ const pessoaEmpregadaExemplo: PessoaEmpregada = { nome: 'Julia', idade: 21, empr
         }
     }
    
- class Gerente extends Funcionario {
+ class Gestor extends Funcionario {
     constructor(nome: string, cargo: string, salario: number, public departamento: string) {
      super(nome, cargo, salario)
      }
@@ -60,8 +60,8 @@ const pessoaEmpregadaExemplo: PessoaEmpregada = { nome: 'Julia', idade: 21, empr
      }
     }
     
-const gerenteExemplo = new Gerente('Fernando', 'Gestor de TI', 15000, 'Tecnologia');
-    console.log(gerenteExemplo.descricaoDetalhada());
+const gestorExemplo = new Gestor('Fernando', 'Gestor de TI', 15000, 'Tecnologia');
+    console.log(gestorExemplo.descricaoDetalhada());
 
 //execicio4
 
