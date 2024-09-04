@@ -91,13 +91,60 @@ constructor(titular: string, saldo: number, public limiteCredito: number)
 
  //exercicio5
 
-import { Cliente } from './Cliente';
+
+import { Pedido } from './Pedido';
+import { Cliente } from './Cliente'; 
+
+const clienteExemplo = new Cliente('Lucas', 'lucas@gmail.com');
+const pedidoExemplo = new Pedido(clienteExemplo, 'Notebook', 4500);
+
+console.log(pedidoExemplo.exibirPedido());
+
+
  export class Pedido {
     constructor(public cliente: Cliente, public produto: string, public valor:number) {}
 
     exibirPedido(): string {
-        return `Cliente: ${this.cliente.nome}, Produto: ${this.produto}, Valor:
-        R$${this.valor.toFixed(2)}`;
+        return `Cliente: ${this.cliente.nome}, Produto: ${this.produto}, Valor: R$${this.valor.toFixed(2)}`;
         }
  }
 
+//exercicio6
+
+export namespace Financeiro {
+    export function calcularImposto(valor: number, taxa: number): number {
+        return valor * taxa;
+    }
+
+    export function calcularDesconto(valor: number, taxa: number): number {
+        return valor - (valor * taxa);
+    }
+
+    export class Orcamento {
+        constructor(public valorTotal: number, public itens: string[]) { }
+
+        exibirOrcamento(): string {
+            return `Itens: ${this.itens.join(', ')}, Valor Total: R$${this.valorTotal.toFixed(2)}`;
+        }
+    }
+}
+
+//exercicio7
+import { Cliente } from './cliente';
+import { Financeiro } from './financeiro';
+import { Pedido } from './pedido';
+
+const felipeCliente = new Cliente('Felipe', 'frm@pm.me');
+const pedidoFelipe = new Pedido(felipeCliente, 'PS5', 5000);
+
+console.log(pedidoFelipe.exibirPedido());
+
+const orcamentoExemplo = new Financeiro.Orcamento(20000, ['Alienware', 'Macintosh']);
+
+console.log(orcamentoExemplo.exibirOrcamento());
+
+const valorComImposto = Financeiro.calcularImposto(5000, 0.15);
+console.log(`Valor com Imposto: R$${valorComImposto.toFixed(2)}`);
+
+const valorComDesconto = Financeiro.calcularDesconto(5000, 0.10);
+console.log(`Valor com Desconto: R$${valorComDesconto.toFixed(2)}`);
