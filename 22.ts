@@ -36,7 +36,7 @@ function exibirInformacoesEmpregado(empregado: PessoaEmpregada): string {
     return `Nome: ${empregado.nome}, Idade: ${empregado.idade}, Empresa: ${empregado.empressa}, Salário: R$${empregado.salario.toFixed(2)}.`;
 }
 
-const pessoaEmpregadaExemplo: PessoaEmpregada = { nome: 'Ana', idade: 35, empressa: 'TechCorp', salario: 8000 };
+const pessoaEmpregadaExemplo: PessoaEmpregada = { nome: 'Julia', idade: 21, empressa: 'fi_OXOX', salario: 10000 };
  console.log(exibirInformacoesEmpregado(pessoaEmpregadaExemplo));
 
 
@@ -60,7 +60,7 @@ const pessoaEmpregadaExemplo: PessoaEmpregada = { nome: 'Ana', idade: 35, empres
      }
     }
     
-const gerenteExemplo = new Gerente('Carlos', 'Gerente de TI', 12000, 'Tecnologia');
+const gerenteExemplo = new Gerente('Fernando', 'Gestor de TI', 15000, 'Tecnologia');
     console.log(gerenteExemplo.descricaoDetalhada());
 
 //execicio4
@@ -86,7 +86,7 @@ constructor(titular: string, saldo: number, public limiteCredito: number)
     }
  }
 
- const contaCorrenteExemplo = new ContaCorrente('Fernanda', 5000, 2000);
+ const contaCorrenteExemplo = new ContaCorrente('Felipe', 8000, 3000);
  console.log(contaCorrenteExemplo.exibirSaldo());
 
  //exercicio5
@@ -95,8 +95,8 @@ constructor(titular: string, saldo: number, public limiteCredito: number)
 import { Pedido } from './Pedido';
 import { Cliente } from './Cliente'; 
 
-const clienteExemplo = new Cliente('Lucas', 'lucas@gmail.com');
-const pedidoExemplo = new Pedido(clienteExemplo, 'Notebook', 4500);
+const clienteExemplo = new Cliente('Berenice', 'bere@gmail.com');
+const pedidoExemplo = new Pedido(clienteExemplo, 'Notebook', 5500);
 
 console.log(pedidoExemplo.exibirPedido());
 
@@ -134,8 +134,8 @@ import { Cliente } from './cliente';
 import { Financeiro } from './financeiro';
 import { Pedido } from './pedido';
 
-const felipeCliente = new Cliente('Felipe', 'frm@pm.me');
-const pedidoFelipe = new Pedido(felipeCliente, 'PS5', 5000);
+const felipeCliente = new Cliente('José', 'ze@pm.me');
+const pedidoFelipe = new Pedido(felipeCliente, 'PS5', 2800);
 
 console.log(pedidoFelipe.exibirPedido());
 
