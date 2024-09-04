@@ -8,8 +8,7 @@ interface Produtos {
 type FormaPagamento = 'dinheiro' | 'cartão' | 'pix';
 
 function Compra(produto: Produtos, pagamento: FormaPagamento): string {
-    return `Produto: ${produto.nome}, Categoria: ${produto.categoria}, Preço:
-    R$${produto.preco.toFixed(2)}, Forma de Pagamento: ${pagamento}.`;
+    return `Produto: ${produto.nome}, Categoria: ${produto.categoria}, Preço: R$${produto.preco.toFixed(2)}, Forma de Pagamento: ${pagamento}.`;
     
 }
 
@@ -102,42 +101,3 @@ import { Cliente } from './Cliente';
         }
  }
 
-
-import { Pedido } from './Pedido';
-import { Cliente } from './Cliente';
-
-const clienteExemplo = new Cliente('Lucas', 'lucas@gmail.com');
-const pedidoExemplo = new Pedido(clienteExemplo, 'Notebook', 4500);
-
-console.log(pedidoExemplo.exibirPedido());
-
-//exercicio6
-export namespace Financeiro {
-     export function calcularImposto(valor: number, taxa: number): number {
-        return valor * taxa;
-}
-    
- export function calcularDesconto(valor: number, taxa: number): number {
-    return valor - (valor * taxa);
-     }
-    
-export class Orcamento {
-     constructor(public valorTotal: number, public itens: string[]) {}
-    
-     exibirOrcamento(): string {
-    return `Itens: ${this.itens.join(', ')}, Valor Total: R$${this.valorTo
-    tal.toFixed(2)}`;
- }
- }
-}
-
-import { Financeiro } from './Financeiro';
-
-    const orcamentoExemplo = new Financeiro.Orcamento(5000, ['Notebook', 'Mouse']);
-    console.log(orcamentoExemplo.exibirOrcamento());
- 
-    const valorComImposto = Financeiro.calcularImposto(5000, 0.15);
-    console.log(`Valor com Imposto: R$${valorComImposto.toFixed(2)}`);
-
-    const valorComDesconto = Financeiro.calcularDesconto(5000, 0.10);
-    console.log(`Valor com Desconto: R$${valorComDesconto.toFixed(2)}`)
