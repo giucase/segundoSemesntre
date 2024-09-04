@@ -21,19 +21,27 @@ const maiorPalavra = encontrarMaiorElemento(['gato', 'cachorro', 'coelho']);
 
 //2
 function medirTempoDeExecucao(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
-    
+    const metodoOriginal = descriptor.value;
+
+    descriptor.value = function (...args: any[]) {
+        console.time(propertyKey);
+        const resultado = metodoOriginal.apply(this, args);
+        console.timeEnd(propertyKey);
+        return resultado;
+    };
+
+    return descriptor;
 }
 
 class Calculadora {
-    
-    somarNumeros( @medirTempoDeExecucao array: number[]): number {
+    somarNumeros(array: number[]): number {
         return array.reduce((a, b) => a + b, 0);
     }
 }
 
-// Exemplo de uso:
-const calc = new Calculadora();
-calc.somarNumeros([1, 2, 3, 4, 5]);
+const calculadora = new Calculadora();
+calculadora.somarNumeros([1, 2, 3, 4, 5]);
+
 
 //3
 
@@ -51,23 +59,30 @@ function verificarEmail(email: string): void {
 try {
     verificarEmail('giugiu18.com');
 } catch (error) {
-    console.error(error.message);  // Deve imprimir "Email inválido"
+    console.error(error.message); 
 }
 
 //4
 
-async function buscarDadosDaAPI(): Promise<string> {
-    // Lógica da função aqui
+async function obterDados(): Promise<string> {
+    return new Promise((resolver, rejeitar) => {
+        setTimeout(() => {
+            const sucesso = Math.random() > 0.5;
+
+            if (sucesso) {
+                resolver('Dados recebidos');
+            } else {
+                rejeitar('Erro ao obter dados');
+            }
+        }, 2000);
+    });
 }
 
-// Exemplo de uso:
-async function executarBusca() {
+async function iniciarBusca() {
     try {
-        const dados = await buscarDadosDaAPI();
-        console.log(dados);
-    } catch (error) {
-        console.error('Erro ao buscar dados:', error);
+        const resultado = await obterDados();
+        console.log(resultado);
+    } catch (erro) {
+        console.error('Erro na busca:', erro);
     }
 }
-
-executarBusca();  // Simula a busca de dados com async/await
